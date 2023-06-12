@@ -1,2 +1,2 @@
 #!/bin/bash
-tail --lines 4 /etc/passwd
+tail /etc/passwd
