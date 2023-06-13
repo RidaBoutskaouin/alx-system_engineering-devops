@@ -1,0 +1,2 @@
+#!/bin/bash
+compgen -v | sort && compgen -e | sort && compgen -A function | sort
