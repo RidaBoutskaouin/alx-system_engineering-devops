@@ -1,0 +1,7 @@
+#!/bin/bash
+for i in {a..z}{a..z}; do
+	    if [[ $i != oo ]]; then
+		            echo $i
+			        fi
+			done | sort
+
