@@ -3,4 +3,4 @@
 
 PID=$(pgrep -f "4-to_infinity_and_beyond")
 
-kill $PID
+kill "$PID"
