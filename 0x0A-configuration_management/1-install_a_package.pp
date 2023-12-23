@@ -1,6 +1,5 @@
-# Install an especific version of flask (2.1.0)
+# install puppet-lint -v 2.5.0
 
-package {'flask':
-  ensure   => '2.1.0',
-  provider => 'pip3'
+exec { 'puppet-lint':
+  command => '/usr/bin/pip3 install flask==2.1.0',
 }
