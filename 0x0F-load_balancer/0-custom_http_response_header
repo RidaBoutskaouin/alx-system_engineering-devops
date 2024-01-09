@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# This script is used to add custom http response header to the http response
+# The header name is "X-Server-Name" and the value is "my-server"
+
+# update nginx on server 2
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# update nginx.conf
+HOSTNAME=$(hostname)
+sudo sed -i "s/# server_tokens off;/server_tokens off;\n\tadd_header X-Server-Name $HOSTNAME;/" /etc/nginx/sites-available/default
+
+# index.html
+echo "Hello World!" > /var/www/html/index.html
+
+# redirect /redirect_me
+sed -i '/listen 80 default_server;/a rewrite ^redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+# 404
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+sed -i '/server_name _;/a error_page 404 /404.html;\nlocation = /404.html {\nroot /usr/share/nginx/html;\ninternal;\n}' /etc/nginx/sites-available/default
+
+service nginx restart
