@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Edit Nginx config file
+sudo sed -i 's/listen 80;/listen 0.0.0.0:80;/g' /etc/nginx/sites-enabled/default
+
+# Reload Nginx
+sudo systemctl reload nginx 
