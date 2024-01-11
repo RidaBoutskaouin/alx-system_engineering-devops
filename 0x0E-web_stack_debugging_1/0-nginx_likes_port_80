@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# nginx port 80
-sudo sed -i 's/listen 80;/listen 0.0.0.0:80;/g' /etc/nginx/sites-enabled/default
-sudo systemctl reload nginx 
+# debugging Nginx web server
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+service nginx restart
