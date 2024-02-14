@@ -1,4 +1,4 @@
-#!/usr/share/python3
+#!/usr/bin/python3
 """Module to get the number of subscribers of a subreddit"""
 import requests
 
